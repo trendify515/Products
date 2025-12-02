@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Listing Screen</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+      /* Basic Reset and Mobile Screen Simulation */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light background for the overall page */
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.mobile-screen {
+    width: 375px; /* Common mobile width simulation */
+    min-height: 667px; /* Common mobile height simulation */
+    background-color: #ffffff; /* White background for the app screen */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 0 15px 15px 15px;
+    box-sizing: border-box;
+    overflow-y: auto; /* Allow scrolling if content is too long */
+}
+
+/* --- Header Styling --- */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    font-size: 1.2em;
+    color: #333;
+    border-bottom: 1px solid #eee; /* Subtle separation */
+}
+.back-arrow, .menu-icon {
+    font-size: 1.5em;
+    cursor: pointer;
+}
+.header-title {
+    font-weight: bold;
+    /* This title is just a placeholder; the wireframe points to the whole bar as "Header" */
+    font-size: 1em; 
+}
+
+
+/* --- Search Styling --- */
+.search-container {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    position: relative;
+}
+
+.search-input {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding-right: 45px; /* Make space for the icon */
+}
+
+.search-button {
+    position: absolute;
+    right: 5px;
+    background: none;
+    border: none;
+    color: #007bff;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.search-products-label {
+    position: absolute;
+    top: -25px; /* Position above the search bar */
+    right: 0;
+    font-size: 0.8em;
+    color: #666;
+    margin: 0;
+}
+
+/* --- Trending Title --- */
+.trending-title {
+    font-size: 1.1em;
+    color: #333;
+    margin: 15px 0 10px 0;
+    font-weight: 600;
+}
+
+
+/* --- Product Card Styling --- */
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    position: relative;
+    display: flex; /* Setup for internal content layout */
+}
+
+.product-content {
+    display: flex;
+    width: 100%;
+    align-items: flex-start;
+}
+
+.product-image-placeholder {
+    width: 80px;
+    height: 80px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.9em;
+    color: #666;
+    flex-shrink: 0; /* Prevents image from shrinking */
+    margin-right: 10px;
+}
+
+.product-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 5px;
+}
+
+.product-title {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.product-description {
+    margin: 0 0 10px 0;
+    font-size: 0.85em;
+    color: #555;
+}
+
+.buy-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end; /* Push button to the right */
+    font-size: 0.9em;
+    width: fit-content;
+}
+
+/* --- Rating and Label Placement (to mimic the wireframe's arrows) --- */
+
+.rating-box {
+    position: absolute;
+    left: -15px; /* Adjust to be outside the card */
+    top: 50%;
+    transform: translateY(-50%);
+    color: gold;
+    font-size: 1.5em;
+    padding: 5px;
+}
+
+.rating-star {
+    /* Style for the star icon */
+}
+
+.rating-label {
+    position: absolute;
+    left: -15px;
+    top: 0; /* Label placement is a bit ambiguous, placing it at the top-left */
+    font-size: 0.8em;
+    color: #000;
+    font-style: italic;
+    transform: translateY(-100%); /* Move above the rating box area */
+    display: none; /* Hiding these labels as they are instructions, not UI elements */
+}
+
+.buy-label {
+    position: absolute;
+    right: 5px;
+    bottom: -15px;
+    font-size: 0.8em;
+    color: #000;
+    font-style: italic;
+    display: none; /* Hiding these labels as they are instructions, not UI elements */
+}
+
+.product-details .product-title {
+    position: relative;
+}
+
+.product-details .product-title::before {
+    content: "Title & Description"; /* Label to mimic the wireframe's arrow */
+    position: absolute;
+    right: -250px; /* Position far right */
+    top: 0;
+    font-size: 0.8em;
+    color: #000;
+    font-style: italic;
+    white-space: nowrap;
+    display: none; /* Hiding these labels as they are instructions, not UI elements */
+}
+    </style>
+</head>
+<body>
+    <div class="mobile-screen">
+        <header class="header">
+            <h1 class="header-title">🛍️ Shopping App</h1>
+        </header>
+
+        <section class="search-container">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Search Products">
+            </div>
+        </section>
+        
+        <section class="trending-products">
+            <h2>Top Trending Products:</h2>
+            
+            <div class="product-card">
+                <div class="product-image">
+                                    </div>
+                <div class="product-details">
+                    <div class="title-desc">
+                        <h3>Product Title One</h3>
+                        <p>Short description of the product and its features.</p>
+                    </div>
+                    <div class="rating-buy">
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.5
+                        </div>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                                    </div>
+                <div class="product-details">
+                    <div class="title-desc">
+                        <h3>Product Title Two</h3>
+                        <p>Short description of another exciting product.</p>
+                    </div>
+                    <div class="rating-buy">
+                        <div class="rating">
+                            <i class="fas fa-star"></i> 4.2
+                        </div>
+                        <button class="buy-button">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</body>
+</html>
