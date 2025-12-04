@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "electronics",
             badge: "TRENDING",
             inStock: true,
-            onSale: true
+            onSale: true,
+            image: "trendify.png"
         },
         {
             id: 2,
@@ -218,6 +219,7 @@ document.addEventListener('DOMContentLoaded', function() {
         card.dataset.inStock = product.inStock;
         card.dataset.onSale = product.onSale;
         card.dataset.link = product.link;
+        card.dataset.image = product.image;
         
         const badgeHTML = product.badge ? `<div class="product-badge">${product.badge}</div>` : '';
         const originalPriceHTML = product.originalPrice ? 
@@ -225,7 +227,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         card.innerHTML = `
             ${badgeHTML}
-            <div class="product-image"></div>
+            <div class="product-image"><img src="${product.image}"></div>
             <div class="product-content">
                 <h3 class="product-title">${product.title}</h3>
                 <p class="product-description">${product.description}</p>
