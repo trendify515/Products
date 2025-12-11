@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
             badge: "NEW",
             inStock: true,
             onSale: false,
-            image: "https://drive.google.com/file/d/1Xc7Mko7HwmEZrxIugHZvwE8cL33yRikg/view?usp=drivesdk"
+            image: "https://drive.google.com/thumbnail?id=1Xc7Mko7HwmEZrxIugHZvwE8cL33yRikg"
         },
         {
             id: 3,
