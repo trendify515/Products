@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
             category: "electronics",
             badge: "NEW",
             inStock: true,
-            onSale: false
+            onSale: false,
+            image: "https://drive.google.com/file/d/1Xc7Mko7HwmEZrxIugHZvwE8cL33yRikg/view?usp=drivesdk"
         },
         {
             id: 3,
